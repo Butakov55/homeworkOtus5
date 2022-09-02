@@ -41,4 +41,15 @@
             content-type="application/json"
             timeout="15000"/>
 
+    <citrus-http:client
+            id="restClient"
+            request-url="${urlMock}"
+            content-type="application/json"
+            timeout="15000"/>
+
+    <citrus-http:server id="restServer"
+                        port="5555"
+                        auto-start="true"
+                        timeout="15000"/>
+
 </beans>
