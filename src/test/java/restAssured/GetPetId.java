@@ -1,3 +1,4 @@
+package restAssured;
 
 import dto.Pet;
 import org.junit.jupiter.api.Test;

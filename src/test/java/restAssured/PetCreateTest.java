@@ -1,3 +1,5 @@
+package restAssured;
+
 import com.github.javafaker.Faker;
 import dto.Pet;
 import org.junit.jupiter.api.Test;
