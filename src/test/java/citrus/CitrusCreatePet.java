@@ -3,10 +3,13 @@ package citrus;
 import com.consol.citrus.annotations.CitrusTest;
 import com.consol.citrus.context.TestContext;
 import com.consol.citrus.dsl.junit.JUnit4CitrusTestRunner;
+import com.consol.citrus.junit.JUnit4CitrusSupport;
 import org.junit.Test;
 
+import static com.consol.citrus.http.actions.HttpActionBuilder.http;
 
-public class CitrusCreatePet extends JUnit4CitrusTestRunner {
+
+public class CitrusCreatePet extends JUnit4CitrusSupport {
 
     public TestContext context;
 
@@ -17,13 +20,15 @@ public class CitrusCreatePet extends JUnit4CitrusTestRunner {
         String name = "Elza";
         String status = "available";
 
-        this.context = citrus.createTestContext();
+        this.context = citrus.getCitrusContext().createTestContext();
 
-        http(httpActionBuilder -> httpActionBuilder
+        $(http()
                 .client("urlAnimal")
                 .send()
                 .post()
-                .payload("{\n" +
+                .message()
+                .type("application/json")
+                .body("{\n" +
                         "    \"id\": 165,\n" +
                         "    \"category\": null, \n" +
                         "    \"name\": \"Elza\",\n" +
@@ -31,6 +36,7 @@ public class CitrusCreatePet extends JUnit4CitrusTestRunner {
                         "    \"tags\": null, \n" +
                         "    \"status\": \"available\"\n" +
                         "}")
+
         );
 
     }
