@@ -4,8 +4,12 @@ import com.consol.citrus.annotations.CitrusTest;
 import com.consol.citrus.context.TestContext;
 import com.consol.citrus.dsl.junit.JUnit4CitrusTestRunner;
 import com.consol.citrus.junit.JUnit4CitrusSupport;
+import com.consol.citrus.message.builder.ObjectMappingPayloadBuilder;
+import dto.Pet;
 import org.junit.Test;
+import org.springframework.http.HttpStatus;
 
+import static com.consol.citrus.actions.EchoAction.Builder.echo;
 import static com.consol.citrus.http.actions.HttpActionBuilder.http;
 
 
@@ -38,6 +42,34 @@ public class CitrusCreatePet extends JUnit4CitrusSupport {
                         "}")
 
         );
+
+        context.setVariable("value", "superValue");
+        $(echo("Property value " + context.getVariable("value")));
+
+        $(echo("Property value " + context.getVariable("idAnimal")));
+
+        $(http().client("urlAnimal")
+                .send()
+                .get(context.getVariable("idAnimal"))
+        );
+
+        $(http()
+                .client("urlAnimal")
+                .receive()
+                .response(HttpStatus.OK)
+                .message()
+                .type("application/json")
+                .body(new ObjectMappingPayloadBuilder(getJsonData(), "objectMapper"))
+        );
+
+    }
+
+    public Pet getJsonData() {
+        Pet pet = new Pet();
+        pet.setId(165);
+        pet.setName("Elza");
+        pet.setStatus("available");
+        return pet;
 
     }
 
