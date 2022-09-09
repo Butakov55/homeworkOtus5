@@ -7,6 +7,7 @@
        xmlns:citrus-http="http://www.citrusframework.org/schema/http/config"
        xmlns:citrus-test="http://www.citrusframework.org/schema/testcase"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        http://www.citrusframework.org/schema/config http://www.citrusframework.org/schema/config/citrus-config.xsd
@@ -57,5 +58,21 @@
                         port="5555"
                         auto-start="true"
                         timeout="15000"/>
+
+<!--    <citrus-ws:client id="soapClient"-->
+<!--                      request-url="${urlSOAP}"-->
+<!--                      timeout="15000"/>-->
+
+<!--    <bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory">-->
+<!--        <property name="soapVersion">-->
+<!--            <util:constant static-field="org.springframework.ws.soap.SoapVersion.SOAP_11"/>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    <citrus:schema-repository id="schemaRepositoryService">-->
+<!--        <citrus:schemas>-->
+<!--            <citrus:schema id="DATAACCESS" location="classpath:wsdl/numberconversion.wsdl" />-->
+<!--        </citrus:schemas>-->
+<!--    </citrus:schema-repository>-->
 
 </beans>

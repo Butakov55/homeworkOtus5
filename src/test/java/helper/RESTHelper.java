@@ -1,8 +1,7 @@
-package citrus;
+package helper;
 
 import com.consol.citrus.annotations.CitrusTest;
 import com.consol.citrus.context.TestContext;
-import com.consol.citrus.dsl.junit.JUnit4CitrusTestRunner;
 import com.consol.citrus.junit.JUnit4CitrusSupport;
 import com.consol.citrus.message.builder.ObjectMappingPayloadBuilder;
 import dto.Pet;
@@ -12,14 +11,13 @@ import org.springframework.http.HttpStatus;
 import static com.consol.citrus.actions.EchoAction.Builder.echo;
 import static com.consol.citrus.http.actions.HttpActionBuilder.http;
 
-
-public class CitrusCreatePet extends JUnit4CitrusSupport {
+public class RESTHelper extends JUnit4CitrusSupport {
 
     public TestContext context;
 
     @Test
     @CitrusTest
-    public void getTest() {
+    public void getRestTest() {
 
         this.context = citrus.getCitrusContext().createTestContext();
 
@@ -69,5 +67,4 @@ public class CitrusCreatePet extends JUnit4CitrusSupport {
         return pet;
 
     }
-
 }
