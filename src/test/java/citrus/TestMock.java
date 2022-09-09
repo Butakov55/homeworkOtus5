@@ -78,7 +78,6 @@ public class TestMock extends JUnit4CitrusSupport {
         pet.setName("Elzas");
         pet.setStatus("available");
         return pet;
-
     }
 
 }
